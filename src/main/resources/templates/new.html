@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta charset="utf-8">
+  <title>Add New Form</title>
+</head>
+
+<body>
+  <div class="card">
+    <h5 class="card-header" style="font-size: 18px;">Add new user</h5>
+    <div class="card-body">
+
+      <div class="container mt-2 col-sm-4 text-center">
+        <form id="newUserForm">
+
+<!--          <form id="NewForm" method="POST" action="@{/api/admin}">-->
+<!--            <input type="hidden" name="_method" value="POST" />-->
+
+          <div class="modal-header">
+            <div class="modal-body text-center">
+              <div class="form-group required">
+                <div class="controls">
+
+                  <div class="form-group" style="width: 250px;">
+                    <label for="newFirstName" class="font-weight-bold">First name</label>
+                    <input type="text" name="newFirstName" class="form-control"
+                           style="height: 30px; font-size: 13px;"
+                     id="newFirstName" required>
+                  </div>
+
+                  <div class="form-group" style="width: 250px;">
+                    <label for="newLastName" class="font-weight-bold">Last name</label>
+                    <input type="text" name="newLastName" class="form-control"
+                           style="height: 30px; font-size: 13px;"
+                     id="newLastName" required>
+                  </div>
+
+                  <div class="form-group" style="width: 250px;">
+                    <label for="newAge" class="font-weight-bold">Age</label>
+                    <input type="number" name="newAge" class="form-control"
+                           style="height: 30px; font-size: 13px;"
+                     id="newAge" required>
+                  </div>
+
+                  <div class="form-group" style="width: 250px;">
+                    <label for="newEmail" class="font-weight-bold">Email</label>
+                    <input type="text" name="newEmail" class="form-control"
+                           style="height: 30px; font-size: 13px;"
+                     id="newEmail" required>
+                  </div>
+
+                  <div class="form-group" style="width: 250px;">
+                    <label for="newPassword" class="font-weight-bold" style="width: 250px;">Password</label>
+                    <input type="password" class="form-control"
+                           style="height: 30px; font-size: 13px;"
+                     id="newPassword" name="newPassword" required>
+                  </div>
+
+                  <div class="form-group" style="width: 250px;">
+                    <label for="rolesNew" style="font-size: 14px; width: 250px;" >
+                      <strong>Role</strong>
+                      <br>
+                      <select id="rolesNew" class="form-select" style="height: 50px; width: 250px;"
+                              name="roles" multiple required>
+
+                        <option id="roleAdmin" name="roles" value="ADMIN"
+                                style="font-size: 13px; margin-bottom: 5px;"
+                        >ADMIN</option>
+
+                        <option id="roleUser" name="roles" value="USER"
+                                style="font-size: 13px;"
+                        >USER</option>
+                      </select>
+                    </label>
+                  </div>
+
+                  <button type="submit" class="btn btn-success" id="nav-home-tab">Add new user</button>
+                </div>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

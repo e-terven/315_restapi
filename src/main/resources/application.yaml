@@ -1,0 +1,41 @@
+server:
+  port: 315
+#  servlet:
+#    context-path: /api
+#Connector:
+#  port: 310555
+#  protocol: HTTP/1.1
+#  connectionTimeout: 20000
+#  redirectPort: 8443
+
+logging:
+  level:
+    root: INFO
+    com.example: DEBUG
+
+
+spring:
+  jpa:
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate:
+        hibernate:
+#        enable_lazy_load_no_trans: true
+        dialect: org.hibernate.dialect.MySQLDialect
+        temp:
+          use_jdbc_metadata_defaults: false
+
+
+  mvc:
+    static-path-pattern: /static/**
+  resources:
+    static-locations: classpath:/static/
+
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/314
+    username: root
+    password: mysql33!
+    initialize: true
+

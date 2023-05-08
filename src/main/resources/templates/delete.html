@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8"/>
+    <title>Delete Form</title>
+</head>
+
+<body>
+<div class="modal" id="contentDeleteModal">
+    <div class="modal-dialog modal modal-dialog-centered">
+        <div class="modal-content">
+            <form id="deleteForm">
+<!--                <input type="hidden" name="_method" value="DELETE" />-->
+                <div class="modal-header">
+                    <h5 class="modal-title">Delete User</h5>
+                    <button type="button" class="btn-close" id="del_close"
+                            data-bs-dismiss="modal" data-bs-target="#contentDeleteModal"></button>
+                </div>
+                <div class="modal-body text-center">
+                    <div class="form-group required">
+                        <div class="controls">
+
+                            <label for="idDelete" style="font-size: 14px;">
+                                <strong>ID</strong>
+                                <input class="form-control"
+                                       style="height: 30px; width: 200px; font-size: 13px; color: grey;"
+                                       id="idDelete" readonly>
+                            </label>
+                            <br>
+                            <label for="firstNameDelete" style="font-size: 14px;">
+                                <strong>First name</strong>
+                                <input class="form-control" value="test"
+                                       style="height: 30px; width: 200px; font-size: 13px; color: grey;"
+                                       th:type="text"
+                                       id="firstNameDelete" readonly>
+                            </label>
+                            <br>
+                            <label for="lastNameDelete" style="font-size: 14px;">
+                                <strong>Last name</strong>
+                                <input class="form-control"
+                                       style="height: 30px; width: 200px; font-size: 13px; color: grey;"
+                                       th:type="text"
+                                       id="lastNameDelete" readonly>
+                            </label>
+                            <br>
+                            <label for="ageDelete" style="font-size: 14px;">
+                                <strong>Age</strong>
+                                <input class="form-control"
+                                       style="height: 30px; width: 200px; font-size: 13px; color: grey;"
+                                       th:type="text"
+                                       id="ageDelete" readonly>
+                            </label>
+                            <br>
+                            <label for="emailDelete" style="font-size: 14px;">
+                                <strong>Email</strong>
+                                <input class="form-control"
+                                       style="height: 30px; width: 200px; font-size: 13px; color: grey;"
+                                       th:type="email"
+                                       id="emailDelete" readonly>
+                            </label>
+                            <br>
+                            <div class="form-group">
+                                <label for="rolesDelete" style="font-size: 14px;">
+                                    <strong>Role</strong>
+                                    <br>
+                                    <select id="rolesDelete" class="form-select" style="height: 50px; width: 200px;"
+                                            name="roles" multiple>
+
+                                        <option id="roleAdmin" name="roles" value="ADMIN" style="font-size: 13px; margin-bottom: 5px;"
+                                        >ADMIN</option>
+                                        <br>
+                                        <option id="roleUser" name="roles" value="USER" style="font-size: 13px;"
+                                        >USER</option>
+                                    </select>
+                                </label>
+                            </div>
+
+                            <!------------------------------ "Delete user" - Footer ------------------------------------------------------->
+
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" id="deleteCloseBtn"
+                                        data-bs-dismiss="modal" data-bs-target="#contentDeleteModal" style="margin-bottom: -10px;">Close</button>
+
+                                <button type="submit" class="btn btn-danger"
+                                        id="deleteSubmitBtn" style="margin-bottom: -10px;">Delete</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
