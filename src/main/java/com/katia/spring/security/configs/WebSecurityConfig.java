@@ -1,8 +1,9 @@
 package com.katia.spring.security.configs;
 
-import com.katia.spring.security.model.JwtTokenUtil;
+
+
+
 import com.katia.spring.security.services.CustomUserDetailsService;
-import com.katia.spring.security.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -11,34 +12,30 @@ import org.springframework.security.config.annotation.authentication.builders.Au
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
-import org.springframework.security.crypto.password.NoOpPasswordEncoder;
+import org.springframework.security.core.userdetails.UserDetailsService;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     private static final String ADMIN = "ADMIN";
     private static final String USER = "USER";
-    private CustomUserDetailsService customUserDetailsService;
+//    private UserDetailsService userDetailsService;
     private final SuccessUserHandler successUserHandler;
-    private final JwtTokenUtil jwtTokenUtil;
-    private final UserService userService;
-
+//    private final JwtTokenUtil jwtTokenUtil;
+    private final CustomUserDetailsService customUserDetailsService;
 
     @Autowired
-    public void setUserService(CustomUserDetailsService customUserDetailsService) {
+    public WebSecurityConfig(SuccessUserHandler successUserHandler, CustomUserDetailsService customUserDetailsService) {
+        this.successUserHandler = successUserHandler;
         this.customUserDetailsService = customUserDetailsService;
 
-    }
-    @Autowired
-    public WebSecurityConfig(SuccessUserHandler successUserHandler, JwtTokenUtil jwtTokenUtil, UserService userService) {
-        this.successUserHandler = successUserHandler;
-        this.jwtTokenUtil = jwtTokenUtil;
-        this.userService = userService;
+
     }
 
-    @Autowired
+
     public void configureGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.userDetailsService(customUserDetailsService);
+        auth.authenticationProvider(daoAuthenticationProvider());
 //                .passwordEncoder(new BCryptPasswordEncoder());
     }
 
@@ -71,15 +68,14 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .deleteCookies("JSESSIONID");
     }
 
-    @Override
-    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-        auth.authenticationProvider(daoAuthenticationProvider());
-    }
-
     @Bean
-    public NoOpPasswordEncoder passwordEncoder() {
-        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+    public BCryptPasswordEncoder passwordEncoder() {
+        return new BCryptPasswordEncoder();
     }
+//    @Bean
+//    public NoOpPasswordEncoder passwordEncoder() {
+//        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
+//    }
     @Bean
     public DaoAuthenticationProvider daoAuthenticationProvider() {
         // сказать по логину и паролю существует ли такой пользователь. если существует, положить в Security Context
@@ -95,29 +91,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return super.authenticationManagerBean();
     }
 
-//    public void authenticate(LoginRequest loginRequest) {
-//        try {
-//            UserDetails userDetails = customUserDetailsService.loadUserByUsername(loginRequest.getEmail());
-//            if (passwordEncoder.matches(loginRequest.getPassword(), userDetails.getPassword())) {   //passwordEncoder.matches(loginRequest.getPassword(),
-//                // пароль совпадает, пользователь аутентифицирован
-//                Authentication authentication = new UsernamePasswordAuthenticationToken(
-//                        userDetails, null, userDetails.getAuthorities());
-//                SecurityContextHolder.getContext().setAuthentication(authentication);
-//            } else {
-//                // пароль не совпадает
-//                throw new BadCredentialsException("Invalid password");
-//            }
-//        } catch (UsernameNotFoundException ex) {
-//            // пользователь не найден
-//            throw new UsernameNotFoundException("User not found");
-//        }
-//    }
-
-
-
-
-//    @Bean
-//    public BCryptPasswordEncoder passwordEncoder() {
-//        return new BCryptPasswordEncoder();
-//    }
 }

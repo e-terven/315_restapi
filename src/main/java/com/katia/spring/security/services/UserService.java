@@ -8,6 +8,7 @@ import com.katia.spring.security.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.crossstore.ChangeSetPersister;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -16,13 +17,13 @@ import java.util.*;
 @Transactional
 @Service
 public class UserService {
-    private final UserRepository userRepository;
     private final RoleRepository roleRepository;
+    private final UserRepository userRepository;
 
     @Autowired
-    public UserService(UserRepository userRepository,RoleRepository roleRepository) {
-        this.userRepository = userRepository;
+    public UserService(RoleRepository roleRepository, UserRepository userRepository) {
         this.roleRepository = roleRepository;
+        this.userRepository = userRepository;
     }
 
     public List<User> findAll() {return userRepository.findAll();}
@@ -52,7 +53,7 @@ public class UserService {
         user.setLastName(userDTO.getLastName());
         user.setAge(userDTO.getAge());
         user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
+        user.setPassword(new BCryptPasswordEncoder().encode(userDTO.getPassword()));
 
         List<Role> roles = roleRepository.findByRoleNameIn(userDTO.getRoleName());
         user.getRoles().addAll(roles);
@@ -75,7 +76,7 @@ public class UserService {
         user.setLastName(userDTO.getLastName());
         user.setAge(userDTO.getAge());
         user.setEmail(userDTO.getEmail());
-        user.setPassword(userDTO.getPassword());
+        user.setPassword(new BCryptPasswordEncoder().encode(userDTO.getPassword()));
 
         user.getRoles().clear();
 

@@ -18,13 +18,12 @@ public class UserRestController {
     private final UserService userService;
     private final ObjectMapper objectMapper;
     private AuthenticationManager authenticationManager;
-    private JwtTokenUtil jwtTokenUtil;
+//    private JwtTokenUtil jwtTokenUtil;
 
     @Autowired
-    public UserRestController(UserService userService, AuthenticationManager authenticationManager, JwtTokenUtil jwtTokenUtil, ObjectMapper objectMapper) {
+    public UserRestController(UserService userService, AuthenticationManager authenticationManager, ObjectMapper objectMapper) {
         this.userService = userService;
         this.authenticationManager = authenticationManager;
-        this.jwtTokenUtil = jwtTokenUtil;
         this.objectMapper = objectMapper;
     }
 
