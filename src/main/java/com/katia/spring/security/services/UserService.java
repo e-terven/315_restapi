@@ -76,7 +76,11 @@ public class UserService {
         user.setLastName(userDTO.getLastName());
         user.setAge(userDTO.getAge());
         user.setEmail(userDTO.getEmail());
-        user.setPassword(new BCryptPasswordEncoder().encode(userDTO.getPassword()));
+
+        if (!userDTO.getPassword().equals(user.getPassword())) {
+            user.setPassword(new BCryptPasswordEncoder().encode(userDTO.getPassword()));
+        }
+
 
         user.getRoles().clear();
 

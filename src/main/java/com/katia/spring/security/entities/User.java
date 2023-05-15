@@ -1,7 +1,11 @@
 package com.katia.spring.security.entities;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import lombok.*;
+import org.hibernate.annotations.Fetch;
+import org.hibernate.annotations.FetchMode;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -9,15 +13,16 @@ import javax.validation.constraints.NotBlank;
 import java.util.*;
 
 @Entity
-//@JsonIgnoreProperties(ignoreUnknown = false)
-//@Proxy(lazy = false)
+
 @JsonIgnoreProperties
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
 @Setter
 @Getter
+
 @Table(name = "users")
+
 public class User {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -38,11 +43,13 @@ public class User {
     @NotBlank(message = "Enter the password, please")
     private String password;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE}, fetch = FetchType.EAGER)
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @Fetch(FetchMode.JOIN)
     @JoinTable(
             name = "users_roles",
             joinColumns = @JoinColumn(name = "user_id"),
             inverseJoinColumns = @JoinColumn(name = "role_id"))
+
 
     private Set<Role> roles = new HashSet<>();
 

@@ -1,6 +1,7 @@
 package com.katia.spring.security.repositories;
 
 import com.katia.spring.security.entities.User;
+import org.springframework.data.jpa.repository.EntityGraph;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.lang.Nullable;
 import org.springframework.stereotype.Repository;
@@ -12,7 +13,7 @@ public interface UserRepository extends JpaRepository<User, Long> {
 
     boolean existsByEmail(String email);
     boolean existsByEmailAndIdNot(String email, Long id);
-
+//    @EntityGraph(value = "User.roles", type = EntityGraph.EntityGraphType.LOAD)
     User findByEmail(String email);
     @Nullable
     Optional<User> findById(Long id);
