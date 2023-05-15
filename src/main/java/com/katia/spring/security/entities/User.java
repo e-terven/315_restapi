@@ -14,7 +14,6 @@ import java.util.*;
 
 @Entity
 
-@JsonIgnoreProperties
 @NoArgsConstructor
 @AllArgsConstructor
 @ToString
