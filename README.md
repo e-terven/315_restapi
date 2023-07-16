@@ -44,12 +44,15 @@ The RESTful API can be used for managing data in customer relationship managemen
 
 
 #### Admin Panel 
- - CRUD methods
  - Users List
- - at url: http:/catarion/rest/admin/
+ ![alt-текст]()
+ - CRUD methods
+ 
+
 
 #### User Panel
  - User's information
+ ![alt-текст]()
 
 #### Security Features
  - loginSuccessHandler - for logistic of successful authentication
