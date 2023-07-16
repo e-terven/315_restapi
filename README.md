@@ -55,7 +55,7 @@ The RESTful API can be used for managing data in customer relationship managemen
 
 #### User Panel
  - User's information
- ![alt-текст]()
+ ![alt-текст](https://github.com/e-terven/315_restapi/blob/d43f5501e52687325cc5bb5ea58278795e8ca478/images/Screenshot%202023-07-16%20at%2019.47.21.png)
 
 #### Security Features
  - loginSuccessHandler - for logistic of successful authentication
