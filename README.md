@@ -56,13 +56,13 @@ The RESTful API can be used for managing data in customer relationship managemen
   
  ![alt-текст](https://github.com/e-terven/315_restapi/blob/d43f5501e52687325cc5bb5ea58278795e8ca478/images/Screenshot%202023-07-16%20at%2019.47.21.png)
 
-#### methods: CREATE
+#### method: CREATE
 ![alt-текст](https://github.com/e-terven/315_restapi/blob/1e82f13174b2843b4c68799aa6fc0f28bd34ddc9/images/Create%202023-07-16%20at%2020.01.39.png)
 
-#### CRUD methods: UPDATE
-![alt-текст](
+#### CRUD method: UPDATE
+![alt-текст](https://github.com/e-terven/315_restapi/blob/f4193ad92aee4be8b63614a21d5f779b7da79d4a/images/Edit%202023-07-16%20at%2020.01.54.png)
 
-#### CRUD methods: DELETE
+#### CRUD method: DELETE
 ![alt-текст](
 
 #### Security Features
