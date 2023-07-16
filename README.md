@@ -1,17 +1,20 @@
 ### REST API
- 
+
+I utilized Spring to develop a Java-based RESTful API implementation for constructing web APIs with CRUD functionality.
+
+#### Project Objectives:
+- Construct a RESTful web API with data persistence using Spring and Spring Data JPA
+- Use Spring Initializr to generate the initial Java project
+- Configure application properties for certain **dependencies**, including the H2 embedded database  
+ ----   
+- Define the **entities** that comprise this application scenario (5 endpoints specification)
+- Define the **repositories** that enable creating, updating, and querying these different entities
+- Define the **API contracts** that will enable this application scenario
+- Leverage the convenience of **Lombok**  
+ ----   
+
 The RESTful API can be used for managing data in customer relationship management systems. It includes authentication functionality for both Users and Admin Roles, and works with relational db (MySQL). The API also exposes a set of endpoints that represents CRUD operations:
 
-  **C** reate a User  
-  **R** ead a list of Users / Read a personal information about a User  
-  **U** pdate User's information  
-  **D** elete a User
-  
-
-    The RESTful API defines:
-     - 5 endpoints specification (URL)
-     - HTTP methods (GET, POST, PUT, DELETE) that a client uses to interact with the server and perform operations on resources
-     - data format (JSON)
 
 ## What I learned
 
