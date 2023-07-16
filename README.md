@@ -47,7 +47,7 @@ The RESTful API can be used for managing data in customer relationship managemen
 
 
 #### Admin Panel 
- - Users List
+ - Users List  
  ![alt-текст]()
  - CRUD methods
  
