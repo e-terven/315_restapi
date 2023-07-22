@@ -13,7 +13,15 @@ I utilized Spring to develop a Java-based RESTful API implementation for constru
 - Leverage the convenience of **Lombok**  
  ----   
 
-The RESTful API can be used for managing data in customer relationship management systems. It includes authentication functionality for both Users and Admin Roles, and works with relational db (MySQL). The API also exposes a set of endpoints that represents CRUD operations:
+The RESTful API can be used for managing data in customer relationship management systems. It includes authentication functionality for both Users and Admin Roles, and works with relational db (MySQL). The API also exposes a set of endpoints that represents CRUD operations.
+
+The Admin-User Portal contais the following features:
+1. Admin can add/delete User
+2. Admin can edit User's information
+3. Admin can read the list of users
+4. User can see their profile
+5. User can edit their profile
+6. User can also change their password if necessary
 
 
 ## What I learned
